@@ -29,7 +29,7 @@ add_xerolinux_repo() {
         echo "Adding The Various Repositories..."
         sleep 3
         echo
-        echo -e '\n[xerolinux]\nSigLevel = Optional TrustAll\nServer = https://repos.xerolinux.xyz/$repo/$arch' | sudo tee -a /etc/pacman.conf
+        echo -e '\n[xerolinux]\nSigLevel = Optional TrustAll\nServer = https://repos.xerolinux.xyz/$repo/$arch' | sudo tee -a /etc/pacman.conf  
         sudo sed -i '/^\s*#\s*\[multilib\]/,/^$/ s/^#//' /etc/pacman.conf
         echo
         echo "XeroLinux Repository added!"
@@ -54,8 +54,9 @@ add_chaotic_aur() {
         sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'  
         sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
         echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf
+        touch /etc/pacman.d/chaotic-mirrorlist
         echo
-        echo "Chaotic-AUR Repository added!"
+        echo "Chaotic-AUR Repository added!"  
         echo
         sleep 3
     else
