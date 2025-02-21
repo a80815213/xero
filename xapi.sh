@@ -43,7 +43,23 @@ add_xerolinux_repo() {
 }
 
 # Function to add the Chaotic-AUR repository
-
+add_chaotic_aur() {
+    if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
+        echo
+        echo "Adding The Chaotic-AUR Repository..."
+        sleep 3
+        echo
+        echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf  
+        echo
+        echo "Chaotic-AUR Repository added!"
+        echo
+        sleep 3
+    else
+        echo "Chaotic-AUR Repository already added."
+        echo
+        sleep 3
+    fi
+}
 # Function to update pacman.conf under Misc options
 update_pacman_conf() {
     echo
