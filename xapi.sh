@@ -43,27 +43,6 @@ add_xerolinux_repo() {
 }
 
 # Function to add the Chaotic-AUR repository
-add_chaotic_aur() {
-    if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
-        echo
-        echo "Adding The Chaotic-AUR Repository..."
-        sleep 3
-        echo
-        sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-        sudo pacman-key --lsign-key 3056513887B78AEB
-        pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-        sed '4d' /etc/pacman.d/chaotic-mirrorlist  
-        echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf  
-        echo
-        echo "Chaotic-AUR Repository added!"
-        echo
-        sleep 3
-    else
-        echo "Chaotic-AUR Repository already added."
-        echo
-        sleep 3
-    fi
-}
 
 # Function to update pacman.conf under Misc options
 update_pacman_conf() {
