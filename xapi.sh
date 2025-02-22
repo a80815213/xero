@@ -53,7 +53,7 @@ add_chaotic_aur() {
         sudo pacman-key --lsign-key 3056513887B78AEB
         sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
         echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf
-		sudo sed -i "/Server = https:\/\/cdn-mirror.chaotic\.cx\/\$repo\/\$arch/d" /etc/pacman.d/chaotic-mirrorlist
+	sudo sed -i "/Server = https:\/\/cdn-mirror.chaotic\.cx\/\$repo\/\$arch/d" /etc/pacman.d/chaotic-mirrorlist
         echo
         echo "Chaotic-AUR Repository added!"
         echo
